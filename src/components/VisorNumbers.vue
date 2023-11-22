@@ -1,16 +1,35 @@
 <script setup>
-const onSubmit = () => {
-  console.log('click')
+import { ref, defineProps, computed } from 'vue'
+import { numbersStore } from '../main'
+
+const { numbers } = defineProps(['numbers'])
+
+const text = ref('')
+const errorMessage = ref('')
+
+const addNumber = () => {
+  const newNumber = parseInt(text.value)
+  if (!numbers.includes(newNumber)) {
+    numbersStore.addNumbers(newNumber)
+    errorMessage.value = ''
+    text.value = ''
+  } else {
+    errorMessage.value = 'No puedes repetir numeros!'
+    text.value = ''
+  }
 }
-const userNumbers = [1, 2, 3, 4, 5]
 
 const disabledButton = () => {
-  return userNumbers.length > 4
+  return numbers && Array.isArray(numbers) && numbers.length > 4
 }
+
+const sortedNumbers = computed(() => {
+  return [...numbers].sort((a, b) => a - b)
+})
 </script>
 <template>
   <div class="formContainer">
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="addNumber">
       <label>
         <p>Numbers</p>
         <input
@@ -19,18 +38,20 @@ const disabledButton = () => {
           max="100"
           min="0"
           class="inputField"
+          v-model="text"
         />
         <button type="submit" class="submitButton" :disabled="disabledButton()">Add</button>
       </label>
     </form>
   </div>
+  <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
   <div class="numberContainer">
-    <div v-for="number in userNumbers" :key="number" class="numberItem">
+    <div v-for="number in sortedNumbers" :key="number" class="numberItem">
       <div>{{ number }}</div>
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .formContainer {
   display: flex;
   margin: 10px;
