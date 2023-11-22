@@ -1,5 +1,9 @@
 <script setup>
 import TitleApp from './components/TitleApp.vue'
+import VisorNumbers from './components/VisorNumbers.vue'
+import { numbersStore } from './main'
+
+const numbers = numbersStore.numbers
 </script>
 
 <template>
@@ -8,6 +12,7 @@ import TitleApp from './components/TitleApp.vue'
   </header>
   <main>
     <h2>Aqui anira un component de la loteria</h2>
+    <VisorNumbers :numbers="numbers" />
   </main>
 </template>
 
