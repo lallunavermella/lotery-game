@@ -1,9 +1,11 @@
 <script setup>
+import LoteryNumbers from './components/LoteryNumbers.vue'
 import TitleApp from './components/TitleApp.vue'
 import VisorNumbers from './components/VisorNumbers.vue'
-import { numbersStore } from './main'
+import { numbersStore, loteryNumbersStore } from './main'
 
 const numbers = numbersStore.numbers
+const loteryNumbers = loteryNumbersStore.loteryNumbers
 </script>
 
 <template>
@@ -13,6 +15,7 @@ const numbers = numbersStore.numbers
   <main>
     <h2>Aqui anira un component de la loteria</h2>
     <VisorNumbers :numbers="numbers" />
+    <LoteryNumbers :loteryNumbers="loteryNumbers" />
   </main>
 </template>
 
