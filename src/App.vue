@@ -1,11 +1,17 @@
 <script setup>
+import { computed } from 'vue'
 import LoteryNumbers from './components/LoteryNumbers.vue'
 import TitleApp from './components/TitleApp.vue'
 import VisorNumbers from './components/VisorNumbers.vue'
 import { numbersStore, loteryNumbersStore } from './main'
 
-const numbers = numbersStore.numbers
-const loteryNumbers = loteryNumbersStore.loteryNumbers
+const numbers = computed(() => numbersStore.numbers)
+const loteryNumbers = computed(() => loteryNumbersStore.loteryNumbers)
+
+const resetNumbers = () => {
+  loteryNumbersStore.resetLoteryNumbers()
+  numbersStore.resetNumbers()
+}
 </script>
 
 <template>
@@ -13,9 +19,9 @@ const loteryNumbers = loteryNumbersStore.loteryNumbers
     <TitleApp title="Lotery Game" />
   </header>
   <main>
-    <h2>Aqui anira un component de la loteria</h2>
     <VisorNumbers :numbers="numbers" />
     <LoteryNumbers :loteryNumbers="loteryNumbers" />
+    <button @click="resetNumbers">RESET GAME</button>
   </main>
 </template>
 

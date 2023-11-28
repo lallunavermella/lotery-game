@@ -1,15 +1,15 @@
 <script setup>
-import { ref, defineProps, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { numbersStore } from '../main'
 
-const { numbers } = defineProps(['numbers'])
+//const { numbers } = defineProps(['numbers'])
 
 const text = ref('')
 const errorMessage = ref('')
 
 const addNumber = () => {
   const newNumber = parseInt(text.value)
-  if (!numbers.includes(newNumber)) {
+  if (!numbersStore.numbers.includes(newNumber)) {
     numbersStore.addNumbers(newNumber)
     errorMessage.value = ''
     text.value = ''
@@ -20,11 +20,16 @@ const addNumber = () => {
 }
 
 const disabledButton = () => {
-  return numbers && Array.isArray(numbers) && numbers.length > 4
+  return (
+    numbersStore.numbers && Array.isArray(numbersStore.numbers) && numbersStore.numbers.length > 4
+  )
+}
+const reset = () => {
+  numbersStore.resetNumbers()
 }
 
 const sortedNumbers = computed(() => {
-  return [...numbers].sort((a, b) => a - b)
+  return [...numbersStore.numbers].sort((a, b) => a - b)
 })
 </script>
 <template>
@@ -35,12 +40,13 @@ const sortedNumbers = computed(() => {
         <input
           placeholder="Insert your numbers"
           type="number"
-          max="100"
-          min="0"
+          max="99"
+          min="1"
           class="inputField"
           v-model="text"
         />
         <button type="submit" class="submitButton" :disabled="disabledButton()">Add</button>
+        <button @click="reset" class="submitButton">Reset</button>
       </label>
     </form>
   </div>
