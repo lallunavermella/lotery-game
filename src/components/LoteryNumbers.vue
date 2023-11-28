@@ -2,8 +2,6 @@
 import { computed } from 'vue'
 import { loteryNumbersStore } from '../main'
 
-//const { loteryNumbers } = defineProps(['loteryNumbers'])
-
 const sortedLoteryNumbers = computed(() => {
   return [...loteryNumbersStore.loteryNumbers].sort((a, b) => a - b)
 })

@@ -2,8 +2,6 @@
 import { ref, computed } from 'vue'
 import { numbersStore } from '../main'
 
-//const { numbers } = defineProps(['numbers'])
-
 const text = ref('')
 const errorMessage = ref('')
 
