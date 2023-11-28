@@ -7,6 +7,8 @@ export const useNumbersStore = defineStore('number', () => {
   function addNumbers(value) {
     numbers.value.push(value)
   }
-
-  return { numbers, addNumbers }
+  function resetNumbers() {
+    numbers.value = []
+  }
+  return { numbers, addNumbers, resetNumbers }
 })
