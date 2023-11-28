@@ -1,14 +1,15 @@
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 import { loteryNumbersStore } from '../main'
 
-const { loteryNumbers } = defineProps(['loteryNumbers'])
 const sortedLoteryNumbers = computed(() => {
-  return [...loteryNumbers].sort((a, b) => a - b)
+  return [...loteryNumbersStore.loteryNumbers].sort((a, b) => a - b)
 })
 </script>
 <template>
-  <button @click="loteryNumbersStore.createNumbers()">PLAY</button>
+  <button v-if="sortedLoteryNumbers.length === 0" @click="loteryNumbersStore.createNumbers()">
+    PLAY
+  </button>
   <div class="loteryNumberContainer">
     <div v-for="loterynumber in sortedLoteryNumbers" :key="loterynumber" class="loteryItem">
       <div>{{ loterynumber }}</div>

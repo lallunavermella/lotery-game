@@ -18,5 +18,9 @@ export const useLoteryNumbersStore = defineStore('loteryNumber', () => {
     }, 1000)
   }
 
-  return { loteryNumbers, createNumbers }
+  function resetLoteryNumbers() {
+    loteryNumbers.value = []
+  }
+
+  return { loteryNumbers, createNumbers, resetLoteryNumbers }
 })
