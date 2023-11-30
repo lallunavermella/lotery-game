@@ -2,7 +2,7 @@
 import LoteryNumbers from './components/LoteryNumbers.vue'
 import TitleApp from './components/TitleApp.vue'
 import VisorNumbers from './components/VisorNumbers.vue'
-import ResultsComponent from './components/ResultsComponents.vue'
+import ResultsComponent from './components/ResultsComponent.vue'
 import { numbersStore, loteryNumbersStore } from './main'
 
 const resetNumbers = () => {
