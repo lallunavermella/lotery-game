@@ -16,8 +16,8 @@ const resetNumbers = () => {
     <TitleApp title="Lotery Game" />
   </header>
   <main>
-    <VisorNumbers  />
-    <LoteryNumbers  />
+    <VisorNumbers />
+    <LoteryNumbers />
     <button @click="resetNumbers">RESET GAME</button>
     <ResultsComponent />
   </main>

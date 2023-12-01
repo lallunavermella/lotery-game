@@ -1,8 +1,20 @@
 <script setup>
-import { resultsGameStore } from '../main';
-const results=()=>resultsGameStore.showResult()
+import { ref } from 'vue';
+import { resultsGameStore } from '../main'
+
+let visible = ref(false)
+const showResults = () => {
+  resultsGameStore.showResult()
+  visible.value = true
+}
 </script>
 <template>
-  <button @click="results">RESULTS</button>
-  <div>You have {{ resultsGameStore.result }} match</div>
+  <div>
+    <button @click="showResults">RESULTS</button>
+    <div v-if="visible">
+      <div>You have {{ resultsGameStore.result }} match</div>
+      <div v-if="resultsGameStore.result === 5">You won</div>
+      <div v-if="resultsGameStore.result !== 5">You lost</div>
+    </div>
+  </div>
 </template>
