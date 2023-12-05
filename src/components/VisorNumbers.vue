@@ -69,12 +69,6 @@ const sortedNumbers = computed(() => {
   margin-right: 6px;
 }
 
-.submitButton {
-  width: 70px;
-  height: 25px;
-  border-radius: 15px;
-}
-
 .bodyVisor {
   display: flex;
   align-items: center;
@@ -85,6 +79,15 @@ const sortedNumbers = computed(() => {
   background-color: rgb(234, 222, 244);
 }
 
+.submitButton {
+  width: 70px;
+  height: 25px;
+  border-radius: 15px;
+}
+
+:disabled.button {
+  visibility: hidden;
+}
 .numberContainer {
   margin: 16px;
   display: flex;
