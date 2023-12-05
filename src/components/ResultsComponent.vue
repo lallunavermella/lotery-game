@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { resultsGameStore } from '../main'
 
 let visible = ref(false)
