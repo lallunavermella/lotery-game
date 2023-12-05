@@ -6,15 +6,18 @@ const text = ref('')
 const errorMessage = ref('')
 
 const addNumber = () => {
-  const newNumber = parseInt(text.value)
-  if (!numbersStore.numbers.includes(newNumber)) {
-    numbersStore.addNumbers(newNumber)
-    errorMessage.value = ''
-    text.value = ''
-  } else {
-    errorMessage.value = 'No puedes repetir numeros!'
-    text.value = ''
+  if (text.value !== '') {
+    const newNumber = parseInt(text.value)
+    if (!numbersStore.numbers.includes(newNumber)) {
+      numbersStore.addNumbers(newNumber)
+      errorMessage.value = ''
+      text.value = ''
+    } else {
+      errorMessage.value = 'No puedes repetir numeros!'
+      text.value = ''
+    }
   }
+
 }
 
 const disabledButton = () => {
@@ -24,6 +27,7 @@ const disabledButton = () => {
 }
 const reset = () => {
   numbersStore.resetNumbers()
+  text.value =''
 }
 
 const sortedNumbers = computed(() => {
@@ -45,7 +49,7 @@ const sortedNumbers = computed(() => {
             v-model="text"
           />
           <button type="submit" class="submitButton" :disabled="disabledButton()">Add</button>
-          <button @click="reset" class="submitButton">Reset</button>
+          <button type="button" @click="reset" class="submitButton">Reset</button>
         </label>
       </form>
     </div>
