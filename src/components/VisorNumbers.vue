@@ -31,27 +31,29 @@ const sortedNumbers = computed(() => {
 })
 </script>
 <template>
-  <div class="formContainer">
-    <form @submit.prevent="addNumber">
-      <label>
-        <p>Numbers</p>
-        <input
-          placeholder="Insert your numbers"
-          type="number"
-          max="99"
-          min="1"
-          class="inputField"
-          v-model="text"
-        />
-        <button type="submit" class="submitButton" :disabled="disabledButton()">Add</button>
-        <button @click="reset" class="submitButton">Reset</button>
-      </label>
-    </form>
-  </div>
-  <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
-  <div class="numberContainer">
-    <div v-for="number in sortedNumbers" :key="number" class="numberItem">
-      <div>{{ number }}</div>
+  <div class="bodyVisor">
+    <div class="formContainer">
+      <form @submit.prevent="addNumber">
+        <label>
+          <p>Numbers</p>
+          <input
+            placeholder="Insert your numbers"
+            type="number"
+            max="99"
+            min="1"
+            class="inputField"
+            v-model="text"
+          />
+          <button type="submit" class="submitButton" :disabled="disabledButton()">Add</button>
+          <button @click="reset" class="submitButton">Reset</button>
+        </label>
+      </form>
+    </div>
+    <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
+    <div class="numberContainer">
+      <div v-for="number in sortedNumbers" :key="number" class="numberItem">
+        <div>{{ number }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -71,6 +73,12 @@ const sortedNumbers = computed(() => {
   width: 70px;
   height: 25px;
   border-radius: 15px;
+}
+
+.bodyVisor {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 :hover.submitButton {
