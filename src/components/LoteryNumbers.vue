@@ -5,14 +5,18 @@ import { loteryNumbersStore, numbersStore } from '../main'
 const sortedLoteryNumbers = computed(() => {
   return [...loteryNumbersStore.loteryNumbers].sort((a, b) => a - b)
 })
+
 let errorMessage = ref(false)
+
 const createNumbers = () => {
   if (numbersStore.numbers.length === 5) {
+    errorMessage.value = false
     loteryNumbersStore.createNumbers()
   } else {
     errorMessage.value = true
   }
 }
+
 </script>
 <template>
   <div class="container">
