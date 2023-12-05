@@ -30,3 +30,42 @@ a,
     flex-direction: column;
   }
 }
+.minorTeen {
+  background-color: #ffadad; /* Rosa claro */
+}
+
+.teens {
+  background-color: #ffd6a5; /* Melocotón */
+}
+
+.twenties {
+  background-color: #fdffb6; /* Amarillo pálido */
+}
+
+.thirties {
+  background-color: #caffbf; /* Verde menta */
+}
+
+.forties {
+  background-color: #9bf6ff; /* Azul cielo */
+}
+
+.fifties {
+  background-color: #a0c4ff; /* Azul claro */
+}
+
+.sixties {
+  background-color: #bdb2ff; /* Lila */
+}
+
+.seventies {
+  background-color: #ffc6ff; /* Rosa */
+}
+
+.eighties {
+  background-color: #ffd6a5; /* Melocotón */
+}
+
+.nineties {
+  background-color: #ffadad; /* Rosa claro */
+}

@@ -17,7 +17,6 @@ const addNumber = () => {
       text.value = ''
     }
   }
-
 }
 
 const disabledButton = () => {
@@ -27,7 +26,23 @@ const disabledButton = () => {
 }
 const reset = () => {
   numbersStore.resetNumbers()
-  text.value =''
+  text.value = ''
+}
+const getColor = (number) => {
+  const range = Math.floor((number - 1) / 10)
+  const categories = [
+    'minorTeen',
+    'teens',
+    'twenties',
+    'thirties',
+    'forties',
+    'fifties',
+    'sixties',
+    'seventies',
+    'eighties',
+    'nineties'
+  ]
+  return categories[range]
 }
 
 const sortedNumbers = computed(() => {
@@ -55,7 +70,12 @@ const sortedNumbers = computed(() => {
     </div>
     <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
     <div class="numberContainer">
-      <div v-for="number in sortedNumbers" :key="number" class="numberItem">
+      <div
+        v-for="number in sortedNumbers"
+        :key="number"
+        class="numberItem"
+        :class="`${getColor(number)}`"
+      >
         <div>{{ number }}</div>
       </div>
     </div>
@@ -89,7 +109,7 @@ const sortedNumbers = computed(() => {
   border-radius: 15px;
 }
 
-:disabled.button {
+:disabled.submitButton {
   visibility: hidden;
 }
 .numberContainer {
@@ -99,15 +119,25 @@ const sortedNumbers = computed(() => {
 }
 
 .numberItem {
+  animation: loader 1.25s;
   display: flex;
   flex-direction: column;
   margin-right: 10px;
   padding: 5px;
   border: 1px solid #ccc;
-  border-radius: 20px;
-  width: 30px;
-  height: 30px;
+  border-radius: 30px;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes loader {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
 }
 </style>

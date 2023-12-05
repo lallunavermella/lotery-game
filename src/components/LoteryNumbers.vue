@@ -17,6 +17,22 @@ const createNumbers = () => {
   }
 }
 
+const getColor = (number) => {
+  const range = Math.floor((number - 1) / 10)
+  const categories = [
+    'minorTeen',
+    'teens',
+    'twenties',
+    'thirties',
+    'forties',
+    'fifties',
+    'sixties',
+    'seventies',
+    'eighties',
+    'nineties'
+  ]
+  return categories[range]
+}
 </script>
 <template>
   <div class="container">
@@ -25,7 +41,12 @@ const createNumbers = () => {
     </button>
     <div v-if="errorMessage" style="color: red">Agrega tus numeros</div>
     <div class="loteryNumberContainer">
-      <div v-for="loterynumber in sortedLoteryNumbers" :key="loterynumber" class="loteryItem">
+      <div
+        v-for="loterynumber in sortedLoteryNumbers"
+        :key="loterynumber"
+        class="loteryItem"
+        :class="`${getColor(loterynumber)}`"
+      >
         <div>{{ loterynumber }}</div>
       </div>
     </div>
@@ -52,11 +73,11 @@ const createNumbers = () => {
   align-items: center;
 }
 .loteryItem {
+  animation: loader 1.25s;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
   margin: 12px;
   font-size: 24px;
   border: 1px solid #ccc;
@@ -65,5 +86,14 @@ const createNumbers = () => {
   height: 70px;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes loader {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
 }
 </style>
