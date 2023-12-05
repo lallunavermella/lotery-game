@@ -18,8 +18,8 @@ const resetNumbers = () => {
   <main>
     <VisorNumbers />
     <LoteryNumbers />
-    <button @click="resetNumbers">RESET GAME</button>
     <ResultsComponent />
+    <button @click="resetNumbers">RESET GAME</button>
   </main>
 </template>
 
@@ -27,7 +27,9 @@ const resetNumbers = () => {
 @media (min-width: 1024px) {
   header {
     display: flex;
+    flex-direction: column;
     place-items: center;
+    align-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
 }
