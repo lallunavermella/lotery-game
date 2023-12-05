@@ -2,6 +2,7 @@
 import LoteryNumbers from './components/LoteryNumbers.vue'
 import TitleApp from './components/TitleApp.vue'
 import VisorNumbers from './components/VisorNumbers.vue'
+import ResultsComponent from './components/ResultsComponent.vue'
 import { numbersStore, loteryNumbersStore } from './main'
 
 const resetNumbers = () => {
@@ -15,8 +16,9 @@ const resetNumbers = () => {
     <TitleApp title="Lotery Game" />
   </header>
   <main>
-    <VisorNumbers  />
-    <LoteryNumbers  />
+    <VisorNumbers />
+    <LoteryNumbers />
+    <ResultsComponent />
     <button @click="resetNumbers">RESET GAME</button>
   </main>
 </template>
@@ -25,7 +27,9 @@ const resetNumbers = () => {
 @media (min-width: 1024px) {
   header {
     display: flex;
+    flex-direction: column;
     place-items: center;
+    align-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
 }
