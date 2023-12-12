@@ -3,11 +3,12 @@ import LoteryNumbers from './components/LoteryNumbers.vue'
 import TitleApp from './components/TitleApp.vue'
 import VisorNumbers from './components/VisorNumbers.vue'
 import ResultsComponent from './components/ResultsComponent.vue'
-import { numbersStore, loteryNumbersStore } from './main'
+import { numbersStore, loteryNumbersStore, visibleResultStore } from './main'
 
 const resetNumbers = () => {
   loteryNumbersStore.resetLoteryNumbers()
   numbersStore.resetNumbers()
+  visibleResultStore.toggleIsVisble()
 }
 </script>
 
@@ -19,7 +20,7 @@ const resetNumbers = () => {
     <VisorNumbers />
     <LoteryNumbers />
     <ResultsComponent />
-    <button @click="resetNumbers">RESET GAME</button>
+    <button @click="resetNumbers" class="button">RESET GAME</button>
   </main>
 </template>
 
