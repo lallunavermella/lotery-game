@@ -1,12 +1,9 @@
 <script setup>
-import { ref } from 'vue'
-import { loteryNumbersStore, numbersStore, resultsGameStore } from '../main'
-
-let visible = ref(false)
+import { loteryNumbersStore, numbersStore, resultsGameStore, visibleResultStore } from '../main'
 
 const showResults = () => {
   resultsGameStore.showResult()
-  visible.value = true
+  visibleResultStore.isVisble = true
 }
 
 const disabledButton = () => {
@@ -16,7 +13,7 @@ const disabledButton = () => {
 <template>
   <div>
     <button @click="showResults" :disabled="disabledButton()" class="button">RESULTS</button>
-    <div v-if="visible">
+    <div v-if="visibleResultStore.isVisble">
       <div>You have {{ resultsGameStore.result }} match</div>
       <div v-if="resultsGameStore.result === 5">You won</div>
       <div v-if="resultsGameStore.result !== 5">You lost</div>
