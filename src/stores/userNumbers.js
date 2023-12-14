@@ -5,7 +5,7 @@ export const useNumbersStore = defineStore('number', () => {
   const numbers = ref([])
 
   function addNumbers(value) {
-    numbers.value.push(value)
+    if (numbers.value.length < 5) numbers.value.push(value)
   }
   function resetNumbers() {
     numbers.value = []
