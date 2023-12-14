@@ -8,6 +8,6 @@ defineProps({
 </script>
 <template>
   <div class="greetings">
-    <h1 class="green">{{ title }}</h1>
+    <h1 class="title">{{ title }}</h1>
   </div>
 </template>

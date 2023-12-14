@@ -63,7 +63,14 @@ const sortedNumbers = computed(() => {
             class="inputField"
             v-model="text"
           />
-          <button type="submit" class="submitButton" :disabled="disabledButton()">Add</button>
+          <button
+            v-if="!disabledButton()"
+            type="submit"
+            class="submitButton"
+            :disabled="disabledButton()"
+          >
+            Add
+          </button>
           <button type="button" @click="reset" class="submitButton">Reset</button>
         </label>
       </form>
@@ -109,9 +116,9 @@ const sortedNumbers = computed(() => {
   border-radius: 15px;
 }
 
-:disabled.submitButton {
+/* :disabled.submitButton {
   visibility: hidden;
-}
+} */
 .numberContainer {
   margin: 16px;
   display: flex;
