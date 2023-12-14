@@ -6,14 +6,18 @@ const sortedLoteryNumbers = computed(() => {
   return [...loteryNumbersStore.loteryNumbers].sort((a, b) => a - b)
 })
 
-let errorMessage = ref(false)
+let errorMessage = ref('')
 
 const createNumbers = () => {
   if (numbersStore.numbers.length === 5) {
-    errorMessage.value = false
     loteryNumbersStore.createNumbers()
+    errorMessage.value = ''
   } else {
-    errorMessage.value = true
+    if (numbersStore.numbers.length < 5 && numbersStore.numbers.length > 0) {
+      errorMessage.value = 'Juega con 5 numeros'
+    } else {
+      errorMessage.value = 'agrega tus numeros'
+    }
   }
 }
 
@@ -39,7 +43,7 @@ const getColor = (number) => {
     <button v-if="sortedLoteryNumbers.length === 0" @click="createNumbers" class="submitButton">
       PLAY
     </button>
-    <div v-if="errorMessage" style="color: red">Agrega tus numeros</div>
+    <div v-if="errorMessage" style="color: red">{{ errorMessage }}</div>
     <div class="loteryNumberContainer">
       <div
         v-for="loterynumber in sortedLoteryNumbers"

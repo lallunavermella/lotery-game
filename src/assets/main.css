@@ -1,17 +1,11 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-
-  font-weight: normal;
-}
-
 a,
-.green {
+.title {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: #2e86ab;
   transition: 0.4s;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 @media (hover: hover) {
@@ -72,9 +66,31 @@ a,
 
 .button {
   width: auto;
-  height: 25px;
+  max-width: 200px;
+  height: 30px;
   border-radius: 15px;
 }
 :hover.button {
   background-color: rgb(234, 222, 244);
+}
+
+input {
+  padding: 8px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 14px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+}
+
+/* Estilos cuando el input está enfocado */
+input :focus {
+  outline: none; /* Quita el contorno al enfocar */
+  border-color: #2e86ab; /* Cambia el color del borde al enfocar */
+  box-shadow: 0 0 5px #2e86ab; /* Agrega una sombra al enfocar */
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

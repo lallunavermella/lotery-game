@@ -20,7 +20,9 @@ const resetNumbers = () => {
     <VisorNumbers />
     <LoteryNumbers />
     <ResultsComponent />
-    <button @click="resetNumbers" class="button">RESET GAME</button>
+    <div v-if="visibleResultStore.isVisble">
+      <button @click="resetNumbers" class="button">RESET GAME</button>
+    </div>
   </main>
 </template>
 
@@ -33,5 +35,10 @@ const resetNumbers = () => {
     align-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
